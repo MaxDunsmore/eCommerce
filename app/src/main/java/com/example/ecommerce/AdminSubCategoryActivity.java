@@ -28,13 +28,14 @@ public class AdminSubCategoryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     private ActivityAdminSubCategoryBinding activityAdminSubCategoryBinding;
+    String categoryName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityAdminSubCategoryBinding = DataBindingUtil.setContentView(this,R.layout.activity_admin_sub_category);
 
-        String categoryName = getIntent().getStringExtra("category");
+        categoryName = getIntent().getStringExtra("category");
 
         categoriesReference = FirebaseDatabase.getInstance().getReference().child("SubCategories").child(categoryName);
         recyclerView = findViewById(R.id.recycler_sub_category_list);
@@ -43,7 +44,9 @@ public class AdminSubCategoryActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         activityAdminSubCategoryBinding.fabAddSubCategory.setOnClickListener(view->{
-
+            Intent intent = new Intent(AdminSubCategoryActivity.this, AdminAddSubCategoryActivity.class);
+            intent.putExtra("category", categoryName);
+            startActivity(intent);
         });
 
     }

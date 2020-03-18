@@ -8,6 +8,21 @@
         android:layout_height="match_parent"
         tools:context=".AdminAddNewCategoryActivity">
 
+        <TextView
+            android:id="@+id/textView_title_add_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/abril_fatface"
+            android:text="Add a new Category"
+            android:textAlignment="center"
+            android:textColor="@color/colorDark"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentTop="true"
+            />
+
         <ImageView
             android:id="@+id/image_select_category"
             android:layout_width="350dp"
@@ -17,6 +32,7 @@
             android:src="@drawable/select_product_image"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
+            android:layout_below="@+id/textView_title_add_category"
             />
 
         <EditText

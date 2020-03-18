@@ -26,12 +26,11 @@ import java.util.HashMap;
 public class AdminAddNewCategoryActivity extends AppCompatActivity {
 
     ActivityAdminAddNewCategoryBinding activityAdminAddNewCategoryBinding;
-    String categoryName = "";
     Intent intent;
     private ProgressDialog loadingBar;
     private static final int GalleryPick = 1;
     private Uri imageUri;
-    private String description, price, categoryNameString, saveCurrentDate, descriptionLong;
+    private String categoryNameString, saveCurrentDate;
     private String productRandomKey, downloadImageUrl;
     private StorageReference productImagesRef;
     private DatabaseReference productsRef;
