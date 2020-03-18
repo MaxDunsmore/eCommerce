@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecommerce.Model.Categories;
 import com.example.ecommerce.ViewHolder.CategoriesViewHolder;
+import com.example.ecommerce.databinding.ActivityAdminSubCategoryBinding;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -25,11 +27,12 @@ public class AdminSubCategoryActivity extends AppCompatActivity {
     private DatabaseReference categoriesReference;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    private ActivityAdminSubCategoryBinding activityAdminSubCategoryBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_sub_category);
+        activityAdminSubCategoryBinding = DataBindingUtil.setContentView(this,R.layout.activity_admin_sub_category);
 
         String categoryName = getIntent().getStringExtra("category");
 
@@ -39,6 +42,9 @@ public class AdminSubCategoryActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
+        activityAdminSubCategoryBinding.fabAddSubCategory.setOnClickListener(view->{
+
+        });
 
     }
 

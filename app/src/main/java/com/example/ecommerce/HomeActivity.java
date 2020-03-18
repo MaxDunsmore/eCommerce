@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab_add_category);
         fab.setOnClickListener(view -> {
             if (!type.equals("Admin")) {
                 Intent intent2 = new Intent(HomeActivity.this, CartActivity.class);

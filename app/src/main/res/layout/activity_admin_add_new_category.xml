@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AdminAddNewCategoryActivity">
+
+        <ImageView
+            android:id="@+id/image_select_category"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
+            android:cropToPadding="false"
+            android:scaleType="centerCrop"
+            android:src="@drawable/select_product_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/edit_text_name_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_select_category"
+            android:inputType="textMultiLine"
+            android:layout_marginTop="6dp"
+            android:padding="20dp"
+            android:hint="Category Name"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="45dp"
+            android:maxLines="3"
+            android:background="@drawable/input_design"
+            />
+
+        <Button
+            android:id="@+id/button_add_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edit_text_name_category"
+            android:text="Add Category"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="17dp"
+            android:padding="17dp"
+            android:textSize="18sp"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:background="@drawable/buttons"
+            />
+    </RelativeLayout>
+</layout>

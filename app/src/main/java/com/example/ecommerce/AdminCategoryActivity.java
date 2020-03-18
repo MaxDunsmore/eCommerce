@@ -61,6 +61,10 @@ public class AdminCategoryActivity extends AppCompatActivity {
             Intent intent = new Intent(AdminCategoryActivity.this,AdminNewOrdersActivity.class);
             startActivity(intent);
         });
+        activityAdminCategoryBinding.fabAddCategory.setOnClickListener(view -> {
+            Intent intent = new Intent(AdminCategoryActivity.this,AdminAddNewCategoryActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
