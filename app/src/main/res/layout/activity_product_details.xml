@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickHandler"
+            type="com.example.ecommerce.ProductDetailsActivity.ClickHandler" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ProductDetailsActivity">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/product_price_details"
+            android:layout_marginBottom="1dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/product_image_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/product_name_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/product_image_details"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Product Name"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/product_description_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/product_name_details"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="Product Description"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <FrameLayout
+                    android:id="@+id/frame_layout_final_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/product_description_details">
+
+
+                    <Button
+                        android:id="@+id/long_description_product_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/product_description_details"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="50dp"
+                        android:background="@color/colorPrimary"
+                        android:gravity="left"
+                        android:onClick="@{clickHandler::displayFullDescription}"
+                        android:padding="10dp"
+                        android:paddingStart="20dp"
+                        android:text="Product Description"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:visibility="visible" />
+                    <ImageView
+                        android:id="@+id/image_arrow_product_details"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_below="@+id/product_description_details"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="60dp"
+                        android:src="@drawable/whitearrowdown"
+                        android:elevation="100dp"
+                        android:visibility="visible"
+                        android:onClick="@{clickHandler::displayFullDescription}"/>
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/long_description_product__details_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/frame_layout_final_order"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginRight="20dp"
+                    android:text="Full product description"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+
+                    android:visibility="invisible" />
+
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/product_price_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/number_button"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Product Price"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+            android:id="@+id/number_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="18dp"
+            android:elevation="6dp"
+            android:gravity="center"
+            app:finalNumber="10"
+            app:initialNumber="0"
+            app:textSize="12sp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_product_to_cart_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="15dp"
+            android:backgroundTint="@android:color/white"
+            android:elevation="6dp"
+            android:onClick="@{clickHandler::cartClicked}"
+            android:src="@drawable/nav_cart" />
+    </RelativeLayout>
+</layout>

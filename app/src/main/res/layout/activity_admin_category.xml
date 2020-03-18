@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickHandler"
+            type="com.example.ecommerce.AdminCategoryActivity.ClickHandler" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/ScrollView01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/slogan_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/abril_fatface"
+            android:text="Add a new product"
+            android:textAlignment="center"
+            android:textColor="@color/colorDark"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentTop="true"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_category_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/slogan_category"
+            android:layout_above="@id/button_maintain_admin"
+            android:layout_marginBottom="20dp"
+            >
+        </androidx.recyclerview.widget.RecyclerView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:layout_above="@id/button_maintain_admin"
+            android:layout_alignParentRight="true"
+            app:srcCompat="@drawable/addicon" />
+
+        <Button
+            android:id="@+id/button_maintain_admin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button_check_orders_admin"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="Maintain Products"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/button_logout_admin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="Logout"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            />
+        <Button
+            android:id="@+id/button_check_orders_admin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button_logout_admin"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="Check New Orders"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:textAllCaps="false"
+            />
+
+    </RelativeLayout>
+</layout>

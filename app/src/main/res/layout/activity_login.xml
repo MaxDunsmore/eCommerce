@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="clickHandler"
+            type="com.example.ecommerce.LoginActivity.ClickHandler" />
+        <variable
+            name="user"
+            type="com.example.ecommerce.User" />
+    </data>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/app_login_title"
+        android:layout_width="302dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="22dp"
+        android:fontFamily="@font/abril_fatface"
+        android:text="Shop Online Today"
+        android:textAlignment="center"
+        android:textColor="@color/colorTitle"
+        android:textSize="32sp"
+        android:textStyle="italic" />
+
+    <ImageView
+        android:id="@+id/login_app_logo"
+        android:layout_width="296dp"
+        android:layout_height="98dp"
+        android:layout_below="@+id/app_login_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/applogo" />
+
+    <EditText
+        android:id="@+id/login_phone_number_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_app_logo"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/input_design"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:padding="20dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="17sp"
+        android:text="@={user.phoneNumber}"
+        android:maxLength="10"
+        />
+    <EditText
+        android:id="@+id/login_password_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_phone_number_input"
+        android:background="@drawable/input_design"
+        android:padding="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="17sp"
+        android:text="@={user.password}"
+        />
+    <LinearLayout
+        android:id="@+id/linear_layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/login_password_input"
+        android:layout_marginTop="5dp"
+        >
+        <com.rey.material.widget.CheckBox
+            android:id="@+id/remember_me"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            style="@style/Material.Drawable.CheckBox"
+            android:text="Remember me"
+            android:textColor="@android:color/white"
+            app:cbd_strokeColor="@android:color/white"
+            android:paddingTop="5dp"
+            android:textSize="16sp"
+            android:layout_marginStart="17dp"
+            />
+        <TextView
+            android:id="@+id/forgot_password_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:layout_marginLeft="60dp"
+            />
+        </LinearLayout>
+    <Button
+        android:id="@+id/main_login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear_layout_1"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/buttons"
+        android:padding="17dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:text="Login"
+        android:onClick="@{clickHandler::loginButtonClick}"
+        android:textColor="@android:color/white"
+        />
+    <TextView
+        android:id="@+id/admin_panel_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="10dp"
+        android:text="I'm an Admin?"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/main_login_button"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="23dp"
+        android:onClick="@{clickHandler::adminLink}"
+        />
+    <TextView
+        android:id="@+id/not_admin_panel_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I'm not an Admin?"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/main_login_button"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginStart="23dp"
+        android:visibility="invisible"
+        android:onClick="@{clickHandler::notAdminLink}"
+        />
+
+</RelativeLayout>
+</layout>
