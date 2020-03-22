@@ -56,6 +56,10 @@ public class SettingsActivity extends AppCompatActivity {
         clickHandler = new ClickHandler(this);
         activitySettingsBinding.setClickHandler(clickHandler);
         userInfoDisplay();
+        activitySettingsBinding.buttonSecurityQuestionSettings.setOnClickListener(view->{
+            Intent intent = new Intent(SettingsActivity.this,SetQuestionActivity.class);
+            startActivity(intent);
+        });
     }
     private void userInfoDisplay() {
         dbName = getIntent().getStringExtra("dbName");

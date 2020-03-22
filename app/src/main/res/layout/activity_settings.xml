@@ -121,6 +121,18 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="10dp" />
+        <Button
+            android:id="@+id/button_security_question_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/settings_address"
+            android:layout_margin="15dp"
+            android:text="Set / Change Security Questions"
+            android:background="@color/colorPrimary"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"
+            android:padding="10dp" />
 
     </RelativeLayout>
 </layout>

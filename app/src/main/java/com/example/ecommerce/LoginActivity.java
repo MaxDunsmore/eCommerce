@@ -8,7 +8,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.PhoneNumberUtils;
 import android.view.View;
 import com.rey.material.widget.CheckBox;
 import android.widget.Toast;
@@ -24,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
-    ActivityLoginBinding loginBinding;
+    ActivityLoginBinding activityLoginBinding;
     public User user;
     private ProgressDialog loadingBar;
     private String parentDbName = "Users";
@@ -34,16 +33,21 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        activityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         loadingBar = new ProgressDialog(this);
         user = new User();
-        loginBinding.setUser(user);
+        activityLoginBinding.setUser(user);
         ClickHandler clickHandler = new ClickHandler(this);
-        loginBinding.setClickHandler(clickHandler);
-
+        activityLoginBinding.setClickHandler(clickHandler);
+        activityLoginBinding.forgotPasswordLink.setOnClickListener(view ->{
+            Intent intent = new Intent(LoginActivity.this,ResetPasswordActivity.class);
+            startActivity(intent);
+        });
         // rememberMe checkBox
         checkBoxRememberMe = (CheckBox) findViewById(R.id.remember_me);
         Paper.init(this);
+
+
     }
     @Override
     public void onBackPressed() {
@@ -60,15 +64,15 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         public void adminLink(View view){
-            loginBinding.mainLoginButton.setText("Login Admin");
-            loginBinding.adminPanelLink.setVisibility(View.INVISIBLE);
-            loginBinding.notAdminPanelLink.setVisibility(View.VISIBLE);
+            activityLoginBinding.mainLoginButton.setText("Login Admin");
+            activityLoginBinding.adminPanelLink.setVisibility(View.INVISIBLE);
+            activityLoginBinding.notAdminPanelLink.setVisibility(View.VISIBLE);
             parentDbName = "Admins";
         }
         public void notAdminLink(View view){
-            loginBinding.mainLoginButton.setText("Login");
-            loginBinding.adminPanelLink.setVisibility(View.VISIBLE);
-            loginBinding.notAdminPanelLink.setVisibility(View.INVISIBLE);
+            activityLoginBinding.mainLoginButton.setText("Login");
+            activityLoginBinding.adminPanelLink.setVisibility(View.VISIBLE);
+            activityLoginBinding.notAdminPanelLink.setVisibility(View.INVISIBLE);
             parentDbName = "Users";
         }
 
@@ -78,9 +82,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser() {
-        if (user.getPhoneNumber() == null || loginBinding.getUser().getPhoneNumber().isEmpty()) {
+        if (user.getPhoneNumber() == null || activityLoginBinding.getUser().getPhoneNumber().isEmpty()) {
             Toast.makeText(this, "Please enter your phone number ....", Toast.LENGTH_SHORT).show();
-        } else if (user.getPassword() == null || loginBinding.getUser().getPassword().isEmpty()) {
+        } else if (user.getPassword() == null || activityLoginBinding.getUser().getPassword().isEmpty()) {
             Toast.makeText(this, "Please enter your password ....", Toast.LENGTH_SHORT).show();
         } else if (user.getPhoneNumber().length() < 10) {
             Toast.makeText(this, "Your phone number does not have enough digits", Toast.LENGTH_SHORT).show();
