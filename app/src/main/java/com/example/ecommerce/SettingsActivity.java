@@ -46,7 +46,7 @@ public class SettingsActivity extends AppCompatActivity {
     public String checker = "";
     private String phoneNumberCheck;
     public String imageUriStore;
-    public String dbName;
+    public String dbName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +58,8 @@ public class SettingsActivity extends AppCompatActivity {
         userInfoDisplay();
         activitySettingsBinding.buttonSecurityQuestionSettings.setOnClickListener(view->{
             Intent intent = new Intent(SettingsActivity.this,SetQuestionActivity.class);
+            dbName = getIntent().getStringExtra("dbName");
+            intent.putExtra("dbName",dbName);
             startActivity(intent);
         });
     }

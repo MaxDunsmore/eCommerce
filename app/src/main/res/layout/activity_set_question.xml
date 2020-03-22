@@ -37,7 +37,7 @@
                 android:layout_height="match_parent"
                 android:stretchColumns="1">
                 <TextView
-                    android:id="@+id/text_question1_set"
+                    android:id="@+id/text_question_one_set"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enter Your First Security Question"
@@ -89,10 +89,10 @@
                     android:hint="E.G. Spot"
                     />
                 <TextView
-                    android:id="@+id/text_question2_set"
+                    android:id="@+id/text_question_two_set"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Enter Your First Security Question"
+                    android:text="Enter Your Second Security Question"
                     android:gravity="center"
                     android:textSize="24dp"
                     android:layout_marginTop="15dp"

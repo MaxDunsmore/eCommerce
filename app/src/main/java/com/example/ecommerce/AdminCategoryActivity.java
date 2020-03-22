@@ -47,6 +47,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
         activityAdminCategoryBinding.buttonMaintainAdmin.setOnClickListener(view ->{
             Intent intent = new Intent(AdminCategoryActivity.this,HomeActivity.class);
             intent.putExtra("Admin","Admin");
+            intent.putExtra("dbName","Admin");
             startActivity(intent);
         });
 
