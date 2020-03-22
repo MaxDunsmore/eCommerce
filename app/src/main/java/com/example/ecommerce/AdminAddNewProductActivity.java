@@ -31,6 +31,7 @@ import java.util.HashMap;
 public class AdminAddNewProductActivity extends AppCompatActivity {
     ActivityAdminAddNewProductBinding activityAdminAddNewProductBinding;
     String categoryName = "";
+    String subCategoryName = "";
     Intent intent;
     private ProgressDialog loadingBar;
     private static final int GalleryPick = 1;
@@ -49,6 +50,8 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         activityAdminAddNewProductBinding.setClickHandler(clickHandler);
         intent = getIntent();
         categoryName = getIntent().getExtras().get("category").toString();
+        subCategoryName = getIntent().getExtras().get("subCategory").toString();
+
         Toast.makeText(this, "Category: " + categoryName, Toast.LENGTH_LONG).show();
         productImagesRef = FirebaseStorage.getInstance().getReference().child("Product Images");
         productsRef = FirebaseDatabase.getInstance().getReference().child("Products");
@@ -152,6 +155,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         productMap.put("category", categoryName);
         productMap.put("price", price);
         productMap.put("pname", productName);
+        productMap.put("subCategory",subCategoryName);
         productsRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {

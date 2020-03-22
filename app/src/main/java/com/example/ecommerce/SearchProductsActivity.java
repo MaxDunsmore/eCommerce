@@ -52,7 +52,6 @@ public class SearchProductsActivity extends AppCompatActivity {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Products");
         //possibly change pname to description search by description
-
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
                 .setQuery(reference.orderByChild("pname").startAt(upperString).endAt(upperString+"\uf8ff"),Products.class)

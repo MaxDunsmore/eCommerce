@@ -2,6 +2,7 @@ package com.example.ecommerce;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,7 +40,7 @@ public class HomeActivity extends AppCompatActivity
     private DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    private String type = "";
+    private String type = "User";
     public String dbName;
 
 
@@ -184,6 +185,7 @@ public class HomeActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_categories) {
             Intent intent = new Intent(HomeActivity.this, CategoriesActivity.class);
+            intent.putExtra("dbName", dbName);
             startActivity(intent);
         } else if (id == R.id.nav_settings) {
             Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);

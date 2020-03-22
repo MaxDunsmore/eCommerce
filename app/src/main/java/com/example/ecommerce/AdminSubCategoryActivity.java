@@ -33,7 +33,7 @@ public class AdminSubCategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityAdminSubCategoryBinding = DataBindingUtil.setContentView(this,R.layout.activity_admin_sub_category);
+        activityAdminSubCategoryBinding = DataBindingUtil.setContentView(this, R.layout.activity_admin_sub_category);
 
         categoryName = getIntent().getStringExtra("category");
 
@@ -43,7 +43,7 @@ public class AdminSubCategoryActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        activityAdminSubCategoryBinding.fabAddSubCategory.setOnClickListener(view->{
+        activityAdminSubCategoryBinding.fabAddSubCategory.setOnClickListener(view -> {
             Intent intent = new Intent(AdminSubCategoryActivity.this, AdminAddSubCategoryActivity.class);
             intent.putExtra("category", categoryName);
             startActivity(intent);
@@ -66,8 +66,9 @@ public class AdminSubCategoryActivity extends AppCompatActivity {
                         Picasso.get().load(model.getImage()).into(holder.imageViewCategory);
                         holder.imageViewCategory.setOnClickListener(v -> {
                             Intent intent = new Intent(AdminSubCategoryActivity.this, AdminAddNewProductActivity.class);
-                            String categoryName = getIntent().getStringExtra("category") +  model.getCname();
+                            String categoryName = getIntent().getStringExtra("category");
                             intent.putExtra("category", categoryName);
+                            intent.putExtra("subCategory",model.getCname());
                             startActivity(intent);
                         });
                     }
@@ -79,7 +80,8 @@ public class AdminSubCategoryActivity extends AppCompatActivity {
                         CategoriesViewHolder holder = new CategoriesViewHolder(view);
                         return holder;
                     }
-                };        recyclerView.setAdapter(adapter);
+                };
+        recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
 }

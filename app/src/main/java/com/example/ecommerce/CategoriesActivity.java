@@ -55,6 +55,7 @@ public class CategoriesActivity extends AppCompatActivity {
                         holder.imageViewCategory.setOnClickListener(v -> {
                             Intent intent = new Intent(CategoriesActivity.this, DisplayCategoriesActivity .class);
                             intent.putExtra("category", model.getCname());
+                            intent.putExtra("dbName",getIntent().getStringExtra("dbName"));
                             startActivity(intent);
                         });
                     }
