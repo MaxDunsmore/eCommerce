@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         activityLoginBinding.setClickHandler(clickHandler);
         activityLoginBinding.forgotPasswordLink.setOnClickListener(view ->{
             Intent intent = new Intent(LoginActivity.this,ResetPasswordActivity.class);
+            intent.putExtra("dbName",parentDbName);
             startActivity(intent);
         });
         // rememberMe checkBox
