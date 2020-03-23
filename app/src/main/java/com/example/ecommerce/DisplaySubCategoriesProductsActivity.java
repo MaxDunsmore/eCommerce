@@ -1,64 +1,55 @@
 package com.example.ecommerce;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.example.ecommerce.Model.Products;
 import com.example.ecommerce.ViewHolder.ProductViewHolder;
-import com.example.ecommerce.databinding.ActivityDisplayCategoriesBinding;
+import com.example.ecommerce.databinding.ActivityDisplaySubCategoriesProductsBinding;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-
-public class DisplayCategoriesActivity extends AppCompatActivity {
-    //public String category;
-
-    ActivityDisplayCategoriesBinding activityDisplayCategoriesBinding;
+public class DisplaySubCategoriesProductsActivity extends AppCompatActivity {
+    ActivityDisplaySubCategoriesProductsBinding activityDisplaySubCategoriesBinding;
     private ClickHandler clickHandler;
     RecyclerView.LayoutManager layoutManager;
     public String dbName;
     public String category;
+    public String subCategory;
     DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityDisplayCategoriesBinding = DataBindingUtil.setContentView(this, R.layout.activity_display_categories);
+        activityDisplaySubCategoriesBinding = DataBindingUtil.setContentView(this,R.layout.activity_display_sub_categories_products);
 
         clickHandler = new ClickHandler(this);
-        activityDisplayCategoriesBinding.setClickHandler(clickHandler);
+        activityDisplaySubCategoriesBinding.setClickHandler(clickHandler);
         dbName = getIntent().getStringExtra("dbName");
 
         reference = FirebaseDatabase.getInstance().getReference().child("Products");
-        activityDisplayCategoriesBinding.recyclerCategoryCategoriesDisplay.setHasFixedSize(true);
+        activityDisplaySubCategoriesBinding.recyclerCategorySubCategoriesProductsProductsDisplay.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
-        activityDisplayCategoriesBinding.recyclerCategoryCategoriesDisplay.setLayoutManager(layoutManager);
+        activityDisplaySubCategoriesBinding.recyclerCategorySubCategoriesProductsProductsDisplay.setLayoutManager(layoutManager);
         category = getIntent().getStringExtra("category");
-        activityDisplayCategoriesBinding.buttonSubCategoriesDisplay.setOnClickListener(view->{
-            Intent intent = new Intent(DisplayCategoriesActivity.this, DisplaySubCategoriesActivity.class);
-            intent.putExtra("dbName", dbName);
-            intent.putExtra("category",category);
-            startActivity(intent);
-        });
+        subCategory = getIntent().getStringExtra("subCategory");
     }
-
     public class ClickHandler {
         private Context context;
-        public String category = getIntent().getStringExtra("category");
+        public String category = getIntent().getStringExtra("category") + "/" + getIntent().getStringExtra("subCategory");
 
         public ClickHandler(Context context) {
             this.context = context;
@@ -72,7 +63,7 @@ public class DisplayCategoriesActivity extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
-                        .setQuery(reference.orderByChild("category").equalTo(category), Products.class)
+                        .setQuery(reference.orderByChild("subCategory").equalTo(subCategory), Products.class)
                         .build();
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
@@ -86,11 +77,11 @@ public class DisplayCategoriesActivity extends AppCompatActivity {
                         Picasso.get().load(model.getImage()).into(holder.imageView);
                         holder.imageView.setOnClickListener(v -> {
                             if (dbName.equals("Admins")) {
-                                Intent intent = new Intent(DisplayCategoriesActivity.this, AdminMaintainProductsActivity.class);
+                                Intent intent = new Intent(DisplaySubCategoriesProductsActivity.this, AdminMaintainProductsActivity.class);
                                 intent.putExtra("pid", model.getPid());
                                 startActivity(intent);
                             } else {
-                                Intent intent = new Intent(DisplayCategoriesActivity.this, ProductDetailsActivity.class);
+                                Intent intent = new Intent(DisplaySubCategoriesProductsActivity.this, ProductDetailsActivity.class);
                                 intent.putExtra("pid", model.getPid());
                                 startActivity(intent);
                             }
@@ -104,8 +95,7 @@ public class DisplayCategoriesActivity extends AppCompatActivity {
                         return new ProductViewHolder(view);
                     }
                 };
-        activityDisplayCategoriesBinding.recyclerCategoryCategoriesDisplay.setAdapter(adapter);
+        activityDisplaySubCategoriesBinding.recyclerCategorySubCategoriesProductsProductsDisplay.setAdapter(adapter);
         adapter.startListening();
-
     }
 }
