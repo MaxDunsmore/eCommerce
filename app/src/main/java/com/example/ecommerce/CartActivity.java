@@ -194,9 +194,17 @@ public class CartActivity extends AppCompatActivity {
 
 
     private void setTotalPrice(@NonNull Cart model) {
-        String price = model.getPrice();
-        double priceInt = Double.parseDouble(price.replaceAll("[^\\d.-]", ""));
-        double quantityInt = Double.parseDouble(model.getQuantity());
+        String price = "";
+        price = model.getPrice();
+        double priceInt = 0;
+        double quantityInt = 0;
+        if (!price.isEmpty()) {
+            priceInt = Double.parseDouble(price.replaceAll("[^\\d.-]", ""));
+        }
+        if (!model.getQuantity().isEmpty()) {
+            quantityInt = Double.parseDouble(model.getQuantity());
+        }
+
 
         double productTotalPrice = priceInt * quantityInt;
         orderTotalPrice = orderTotalPrice + productTotalPrice;
