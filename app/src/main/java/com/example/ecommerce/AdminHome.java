@@ -25,7 +25,7 @@ import com.squareup.picasso.Picasso;
 
 import io.paperdb.Paper;
 
-public class AdminCategoryActivity extends AppCompatActivity {
+public class AdminHome extends AppCompatActivity {
     ActivityAdminCategoryBinding activityAdminCategoryBinding;
     private ClickHandler clickHandler;
     private DatabaseReference categoriesReference;
@@ -45,7 +45,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
         activityAdminCategoryBinding.buttonMaintainAdmin.setOnClickListener(view ->{
-            Intent intent = new Intent(AdminCategoryActivity.this,HomeActivity.class);
+            Intent intent = new Intent(AdminHome.this,HomeActivity.class);
             intent.putExtra("Admin","Admin");
             intent.putExtra("dbName","Admin");
             startActivity(intent);
@@ -53,18 +53,18 @@ public class AdminCategoryActivity extends AppCompatActivity {
 
         activityAdminCategoryBinding.buttonLogoutAdmin.setOnClickListener(v -> {
             Paper.book().destroy();
-            Intent intent = new Intent(AdminCategoryActivity.this,MainActivity.class);
+            Intent intent = new Intent(AdminHome.this,MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
         });
         activityAdminCategoryBinding.buttonCheckOrdersAdmin.setOnClickListener(view ->{
-            Intent intent = new Intent(AdminCategoryActivity.this,AdminNewOrdersActivity.class);
+            Intent intent = new Intent(AdminHome.this,AdminNewOrdersActivity.class);
             intent.putExtra("dbName","Admins");
             startActivity(intent);
         });
         activityAdminCategoryBinding.fabAddCategory.setOnClickListener(view -> {
-            Intent intent = new Intent(AdminCategoryActivity.this,AdminAddNewCategoryActivity.class);
+            Intent intent = new Intent(AdminHome.this,AdminAddNewCategoryActivity.class);
             startActivity(intent);
         });
     }
@@ -83,7 +83,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
                         holder.textViewCategoryName.setText(model.getCname());
                         Picasso.get().load(model.getImage()).into(holder.imageViewCategory);
                         holder.imageViewCategory.setOnClickListener(v -> {
-                            Intent intent = new Intent(AdminCategoryActivity.this, AdminSubCategoryActivity.class);
+                            Intent intent = new Intent(AdminHome.this, AdminSubCategoryActivity.class);
                             intent.putExtra("category", model.getCname());
                             startActivity(intent);
                         });
@@ -112,7 +112,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
     }
 
     private void getCategory(String categoryName) {
-        Intent intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+        Intent intent = new Intent(AdminHome.this, AdminAddNewProductActivity.class);
         intent.putExtra("category", categoryName);
         startActivity(intent);
     }

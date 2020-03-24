@@ -7,7 +7,7 @@
 
         <variable
             name="clickHandler"
-            type="com.example.ecommerce.AdminCategoryActivity.ClickHandler" />
+            type="com.example.ecommerce.AdminHome" />
     </data>
 
     <RelativeLayout

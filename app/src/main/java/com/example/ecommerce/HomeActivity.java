@@ -40,7 +40,6 @@ public class HomeActivity extends AppCompatActivity
     private DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    private String type = "User";
     public String dbName;
 
 
@@ -49,14 +48,9 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        if (bundle != null) {
-            type = getIntent().getStringExtra("Admin");
-            dbName = "Admins";
-        } else {
-            dbName = "Users";
-        }
+        dbName = Prevalent.currentUserOnline.getDbName();
+        Log.d("!@!!","" + dbName);
+
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
         Paper.init(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -64,7 +58,7 @@ public class HomeActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab_add_category);
         fab.setOnClickListener(view -> {
-            if (!type.equals("Admin")) {
+            if (!dbName.equals("Admins")) {
                 Intent intent2 = new Intent(HomeActivity.this, CartActivity.class);
                 startActivity(intent2);
             }
@@ -113,7 +107,7 @@ public class HomeActivity extends AppCompatActivity
                         holder.txtProductPrice.setText(stringPriceHome);
                         Picasso.get().load(model.getImage()).into(holder.imageView);
                         holder.imageView.setOnClickListener(v -> {
-                            if (type.equals("Admin")) {
+                            if (dbName.equals("Admins")) {
                                 Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
                                 intent.putExtra("pid", model.getPid());
                                 intent.putExtra("imageURL", model.getImage());
@@ -177,7 +171,7 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_cart) {
-            if (type.equals("Admin")) {
+            if (dbName.equals("Users")) {
                 Intent intent = new Intent(HomeActivity.this, CartActivity.class);
                 startActivity(intent);
             }

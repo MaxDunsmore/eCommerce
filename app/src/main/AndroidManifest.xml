@@ -38,7 +38,7 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AttributeActivity" />
-        <activity android:name=".AdminCategoryActivity" />
+        <activity android:name=".AdminHome" />
         <activity android:name=".AdminAddNewProductActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />

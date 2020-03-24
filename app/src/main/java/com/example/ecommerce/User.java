@@ -7,11 +7,15 @@ import com.example.ecommerce.BR;
 
 public class User extends BaseObservable {
 
+    private String name;
+    private String Password;
+    private String phoneNumber;
+    private String image;
+    private String address;
+
     public User() {
 
     }
-
-    private String name;
 
     public User(String name, String password, String phoneNumber, String image, String address, String dbName) {
         this.name = name;
@@ -62,10 +66,6 @@ public class User extends BaseObservable {
         this.address = address;
     }
 
-    private String Password;
-    private String phoneNumber;
-    private String image;
-    private String address;
 
     public String getDbName() {
         return dbName;
@@ -76,6 +76,5 @@ public class User extends BaseObservable {
     }
 
     private String dbName;
-
 
 }

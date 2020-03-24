@@ -44,8 +44,7 @@ public class LoginActivity extends AppCompatActivity {
             intent.putExtra("dbName",parentDbName);
             startActivity(intent);
         });
-        // rememberMe checkBox
-        checkBoxRememberMe = (CheckBox) findViewById(R.id.remember_me);
+        checkBoxRememberMe = findViewById(R.id.remember_me);
         Paper.init(this);
 
 
@@ -116,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                            if(parentDbName.equals("Admins")){
                                Toast.makeText(LoginActivity.this,"Welcome Admin, you are currently being logged in",Toast.LENGTH_SHORT).show();
                                loadingBar.dismiss();
-                               Intent intent = new Intent(LoginActivity.this,AdminCategoryActivity.class);
+                               Intent intent = new Intent(LoginActivity.this, AdminHome.class);
                                Prevalent.currentUserOnline = userData;
                                startActivity(intent);
                            }
