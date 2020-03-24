@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class CartActivity extends AppCompatActivity {
     ActivityCartBinding activityCartBinding;
@@ -95,6 +96,7 @@ public class CartActivity extends AppCompatActivity {
                 holder.textProductQuantity.setText(stringQuantity);
                 holder.textProductPrice.setText(stringPrice);
                 holder.textProductName.setText(stringName);
+                Picasso.get().load(model.getImage()).into(holder.imageView);
                 setTotalPrice(model);
 
 
@@ -169,10 +171,10 @@ public class CartActivity extends AppCompatActivity {
                         recyclerView.setVisibility(View.GONE);
 
                         activityCartBinding.textMsg1Cart.setVisibility(View.VISIBLE);
-                        activityCartBinding.textMsg1Cart.setText("Congratulations your final order has been Shipped successfully. Your order will be at your door step son");
+                        activityCartBinding.textMsg1Cart.setText("Congratulations your order has been Shipped successfully. Your order will be at your door step son");
                         activityCartBinding.nextProcessBtn.setVisibility(View.GONE);
 
-                        Toast.makeText(CartActivity.this, "You can purchase more products once your received your first final order", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CartActivity.this, "You can purchase more products once your received your first order", Toast.LENGTH_SHORT).show();
                     }else if(shippingState.equals("not shipped")){
                         activityCartBinding.totalPrice.setText("Order Status: Not shipped");
                         recyclerView.setVisibility(View.GONE);
@@ -180,7 +182,7 @@ public class CartActivity extends AppCompatActivity {
                         activityCartBinding.textMsg1Cart.setVisibility(View.VISIBLE);
                         activityCartBinding.nextProcessBtn.setVisibility(View.GONE);
 
-                        Toast.makeText(CartActivity.this, "You can purchase more products once your received your first final order", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CartActivity.this, "You can purchase more products once your received your first order", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

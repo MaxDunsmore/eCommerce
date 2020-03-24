@@ -65,6 +65,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             cartMap.put("price", activityProductDetailsBinding.productPriceDetails.getText().toString());
             cartMap.put("date", saveCurrentDate);
             cartMap.put("quantity", activityProductDetailsBinding.numberButton.getNumber());
+            cartMap.put("image",getIntent().getStringExtra("imageURL"));
             cartMap.put("discount", "");
             cartListRef.child("User View").child(Prevalent.currentUserOnline.getPhoneNumber()).child("Products").child(productID)
                     .updateChildren(cartMap)

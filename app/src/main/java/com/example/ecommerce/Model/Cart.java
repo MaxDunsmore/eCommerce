@@ -48,14 +48,25 @@ public class Cart {
     private String quantity;
     private String discount;
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    private String image;
+
     public Cart() {
     }
 
-    public Cart(String pid, String pname, String price, String quantity, String discount) {
+    public Cart(String pid, String pname, String price, String quantity, String discount,String image) {
         this.pid = pid;
         this.pname = pname;
         this.price = price;
         this.quantity = quantity;
         this.discount = discount;
+        this.image = image;
     }
 }

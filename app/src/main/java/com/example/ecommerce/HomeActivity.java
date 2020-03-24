@@ -84,7 +84,7 @@ public class HomeActivity extends AppCompatActivity
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
         userNameTextView.setText(Prevalent.currentUserOnline.getName());
-        if (Prevalent.currentUserOnline.getImage().length() > 3) {// find a better fix
+        if (Prevalent.currentUserOnline.getImage() != null) {// find a better fix
             Picasso.get().load(Prevalent.currentUserOnline.getImage()).placeholder(R.drawable.profile).into(profileImageView);
         }
 
@@ -116,10 +116,12 @@ public class HomeActivity extends AppCompatActivity
                             if (type.equals("Admin")) {
                                 Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
                                 intent.putExtra("pid", model.getPid());
+                                intent.putExtra("imageURL", model.getImage());
                                 startActivity(intent);
                             } else {
                                 Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
                                 intent.putExtra("pid", model.getPid());
+                                intent.putExtra("imageURL", model.getImage());
                                 startActivity(intent);
                             }
                         });
@@ -198,6 +200,9 @@ public class HomeActivity extends AppCompatActivity
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
+        }else if(id == R.id.nav_orders){
+            Intent intent = new Intent(HomeActivity.this, CheckOrdersActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

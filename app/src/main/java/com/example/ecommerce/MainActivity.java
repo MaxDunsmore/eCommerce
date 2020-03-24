@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         else {
                             Toast.makeText(MainActivity.this,"Wrong Password",Toast.LENGTH_SHORT).show();
+                            Paper.book().destroy();
                             loadingBar.dismiss();
                         }
                     }

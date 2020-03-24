@@ -60,6 +60,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
         });
         activityAdminCategoryBinding.buttonCheckOrdersAdmin.setOnClickListener(view ->{
             Intent intent = new Intent(AdminCategoryActivity.this,AdminNewOrdersActivity.class);
+            intent.putExtra("dbName","Admins");
             startActivity(intent);
         });
         activityAdminCategoryBinding.fabAddCategory.setOnClickListener(view -> {
