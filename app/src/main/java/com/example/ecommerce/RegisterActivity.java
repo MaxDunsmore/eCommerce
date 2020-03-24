@@ -24,6 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     ActivityRegisterBinding activityRegisterBinding;
     private User user;
     private ProgressDialog loadingBar;
+    private String dbName = "Users";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
                     userdatamap.put("phoneNumber", phoneNumber);
                     userdatamap.put("password", password);
                     userdatamap.put("name", name);
+                    userdatamap.put("dbName",dbName);
                     RootRef.child("Users").child(phoneNumber).updateChildren(userdatamap)
                             .addOnCompleteListener(task -> {
                                 if (task.isSuccessful()) {

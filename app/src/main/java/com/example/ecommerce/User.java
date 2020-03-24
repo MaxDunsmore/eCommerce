@@ -13,12 +13,13 @@ public class User extends BaseObservable {
 
     private String name;
 
-    public User(String name, String password, String phoneNumber, String image, String address) {
+    public User(String name, String password, String phoneNumber, String image, String address, String dbName) {
         this.name = name;
         Password = password;
         this.phoneNumber = phoneNumber;
         this.image = image;
         this.address = address;
+        this.dbName  = dbName;
     }
 
     public String getName() {
@@ -65,6 +66,16 @@ public class User extends BaseObservable {
     private String phoneNumber;
     private String image;
     private String address;
+
+    public String getDbName() {
+        return dbName;
+    }
+
+    public void setDbName(String dbName) {
+        this.dbName = dbName;
+    }
+
+    private String dbName;
 
 
 }
